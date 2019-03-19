@@ -1,7 +1,138 @@
 ﻿$(document).ready(function () {
+    $('#dob').datepicker({
 
-    $("#submit").click(function () {
-        jQuery.support.cors = true;
+        changeMonth: true,
+
+        changeYear: true,
+
+        format: "dd/mm/yyyy",
+
+    });
+
+    $("#Createform").validate({
+
+        rules: {
+
+            username: "required",
+
+            firstName: "required",
+
+            lastname: "required",
+
+            //phone: "required",
+
+            adharno: "required",
+
+            dob: "required",
+
+            balance: "required",
+
+            address: "required",
+
+            drpdwnaccount_type: "required",
+
+            drpisadmin: "required",
+
+
+
+            phone: {
+
+                required: true,
+
+                minlength: 10,
+
+                maxlength:10
+
+            },
+
+
+
+            emailid: {
+
+                required: true,
+
+                email: true
+
+            },
+
+            password: {
+
+                required: true,
+
+                minlength: 5
+
+            },
+
+            cpassword: {
+
+                required: true,
+
+                minlength: 5,
+
+                equalTo: "#password"
+
+            },
+
+        },
+
+        messages: {
+
+            username: {
+
+                required: "Please enter your name",
+
+            },
+
+            firstName: "Please enter your first name",
+
+            lastname: "Please enter your last name",
+
+            phone: "Please enter your 10 digit number",
+
+            emailid: "Please enter a valid email Address",
+
+            adharno: "Please enter your aadhar number",
+
+
+
+            password: {
+
+                required: "Please provide a password",
+
+                minlength: "Your password must be at least 5 characters long"
+
+            },
+
+            cpassword: {
+
+                required: "Please provide a password",
+
+                minlength: "Your password must be at least 5 characters long",
+
+                equalTo: "Please enter the same password as above"
+
+            },
+
+            drpdwnaccount_type: {
+
+                required: "Please select an option from the list, if none are appropriate please select 'Other'",
+
+            },
+
+            drpisadmin: {
+
+                required: "Please select an option from the list, if none are appropriate please select 'Other'",
+
+            },
+
+
+
+        },
+
+
+        submitHandler: function (form) {
+
+            jQuery.support.cors = true;
 
         var username = $("#username").val();
 
@@ -59,6 +190,11 @@ for (var ii=0; ii < elements.length; ii++) {
   }
 }
 
+        }
+
     });
+
+});
+$("#btnsubmit").click(function () {
 
 });

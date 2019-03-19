@@ -12,7 +12,7 @@
 
     <script src="~/Scripts/SendMoney.js"></script>
 </head>
-<h2>Send Money</h2>
+@*<h2>Send Money</h2>
 
 <table>
     <tr>
@@ -32,5 +32,32 @@
         <td>&nbsp;</td>
         <td><button type="button" id="submit">Transfer</button></td>
     </tr>
-</table>
+</table>*@
+
+
+<body>
+
+    <form id="SendMoney">
+
+        <div class="form-group">
+
+            <label for="Enter deposit amount">Enter account number to transfer :</label>
+
+            <input type="text" class="form-control" id="receiver" placeholder="Enter deposit amount">
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="Duration in months">Enter amount to transfer :</label>
+
+            <input type="text" class="form-control" id="amount" name="txtduration" placeholder="Duration in months" />
+
+        </div>
+
+        <div><input type="button" id="submit" value="Transfer"></div>
+
+    </form>
+
+</body>
 

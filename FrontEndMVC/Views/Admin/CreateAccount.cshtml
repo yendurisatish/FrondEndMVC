@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<head>
+@*<head>
     <title></title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
@@ -121,4 +121,164 @@
 
 
     </form>
-</body>
+</body>*@
+
+
+
+<head>
+
+    <title></title>
+
+    <style type="text/css">
+        label.error {
+            color: red;
+        }
+    </style>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" type="text/css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js" type="text/javascript"></script>
+
+    <!-- Bootstrap DatePicker -->
+
+    <script src="~/Scripts/CreateAccount.js"></script>
+</head>
+
+<body>
+
+    <form id="Createform">
+
+        <div class="form-group">
+
+            <label for="Username">Username:</label>
+
+            <input type="text" class="form-control" id="username" name="username" placeholder="Username" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="FirstName">FirstName :</label>
+
+            <input type="text" class="form-control" id="firstname" name="firstName" placeholder="FirstName" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="LastName">LastName :</label>
+
+            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="LastName" />
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label for="Date of birth">Date of birth:(dd/mm/yyyy):</label>
+
+            <input type="text" class="form-control" id="dob" name="dob" autocomplete="off" placeholder="Date of birth:(dd/mm/yyyy)" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="Email">Email :</label>
+
+            <input type="text" class="form-control" id="email" name="emailid" placeholder="Email" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="PhoneNumber">Phone Number:</label>
+
+            <input type="text" class="form-control" id="phoneno" name="phone" placeholder="PhoneNumber:" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="Password:">Password:</label>
+
+            <input type="password" class="form-control" id="password" name="password" placeholder=" Password:" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="ConfirmPassword::">Confirm Password:</label>
+
+            <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder=" ConfirmPassword:" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="AadharNumber">Aadhar Number:</label>
+
+            <input type="text" class="form-control" id="aadhar" name="adharno" placeholder="AadharNumber" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="account type">Account type:</label>
+
+            <select class="form-control" id="account_type" name="drpdwnaccount_type">
+
+                <option value="">None</option>
+
+                <option value="savings">savings</option>
+
+                <option value="current">current</option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="Balance">Balance:</label>
+
+            <input type="text" class="form-control" id="balance" name="balance" placeholder="Balance" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="Address">Address:</label>
+
+            <input type="text" class="form-control" id="address" name="address" placeholder="Address" />
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="aadhar number">Is Admin(yes/no : 1/0):</label>
+
+            <select class="form-control" id="Isadmin" name="drpisadmin">
+
+                <option value="">None</option>
+
+                <option value="true">Yes</option>
+
+                <option value="false">No</option>
+
+            </select>
+
+        </div>
+
+        <div><input type="submit" id="submit" value="Create"></div>
+
+    </form>
+    </body>

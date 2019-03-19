@@ -3,12 +3,12 @@
     ViewBag.Title = "ApplyDeposits";
     Layout = "~/Views/Shared/User.cshtml";
 }
-<!DOCTYPE html>
+@*<!DOCTYPE html>
 <head>
     <title></title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     @*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
-    <script src="~/Scripts/ApplyDeposits.js"></script>
+    @*<script src="~/Scripts/ApplyDeposits.js"></script>
 </head>
 <h2>ApplyDeposits</h2>
 
@@ -29,4 +29,54 @@
         <td>&nbsp;</td>
         <td><button type="button" id="submit">Apply</button></td>
     </tr>
-</table>
+</table>*@
+
+
+<!DOCTYPE html>
+
+<head>
+
+    <title></title>
+
+    <style type="text/css">
+        label.error {
+            color: red;
+        }
+    </style>
+
+    @*<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>*@
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+    @*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+
+    <script src="~/Scripts/ApplyDeposits.js"></script>
+
+</head>
+<body>
+
+    <form id="ApplyDepositForm">
+
+        <div class="form-group">
+
+            <label for="Enter deposit amount">Enter deposit amount :</label>
+
+            <input type="text" class="form-control" id="depositamt" name="txtdepositamt" placeholder="Enter deposit amount">
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="Duration in months">Duration in months :</label>
+
+            <input type="text" class="form-control" id="duration" name="txtduration" placeholder="Duration in months" />
+
+        </div>
+
+        <div><input type="submit" id="submit" value="Apply"></div>
+
+    </form>
+
+</body>
