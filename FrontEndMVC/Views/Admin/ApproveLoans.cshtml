@@ -24,7 +24,7 @@
 
                 $.ajax({
 
-                    url: "http://localhost:64294/api/admin/approveloans?id=" + id + "&&acc=" + sessionStorage.getItem("accountno"),
+                    url: "http://localhost:64294/api/admin/approveloans?id=" + id ,
 
                     type: "POST",
 
@@ -67,7 +67,7 @@
 <body>
     <form id="form1">
         <h2>Approve Loans</h2>
-        <table id="tb1" border="1">
+        <table id="tb1" border="1" class="table">
             <thead>
                 <tr>
                     <th>Loan Id</th>
@@ -78,7 +78,7 @@
                     <th>Loan Type</th>
                     <th>City</th>
                     <th>Employement Type</th>
-                    <th>Approval</th>                    
+                                      
                     <th>action</th>
                 </tr>
             </thead>

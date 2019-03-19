@@ -24,9 +24,12 @@
                 sessionStorage.setItem("accountno", resultdata.AccountNumber);
                 sessionStorage.setItem("balance", resultdata.Balance);
                 sessionStorage.setItem("isadmin", isadmin);
-                if (isadmin)
+                if (isadmin[0]=='1')
                 {
                     window.location.href = "http://localhost:55773/Admin/AdminHome";
+                }
+                else if(isadmin[0]=='2') {
+                    window.location.href = "http://localhost:55773/Verifier/VerifierHome";
                 }
                 else {
                     window.location.href = "http://localhost:55773/User/UserHome";

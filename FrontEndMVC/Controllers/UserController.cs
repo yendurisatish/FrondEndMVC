@@ -65,5 +65,9 @@ namespace FrontEndMVC.Controllers
         {
             return View();
         }
+        public ActionResult ViewUnApprovedLoans()
+        {
+            return View();
+        }
 	}
 }

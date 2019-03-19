@@ -35,7 +35,7 @@
                     body += "<td>" + v.LoanType + "</td>";
                     body += "<td>" + v.City + "</td>";
                     body += "<td>" + v.EmpType + "</td>";
-                    body += "<td>" + v.Approval + "</td>";                    
+                                       
                     body += "<td>" + "<input type='button' id='" + id + "' onclick='CallMe(" + v.Id + ")' value='Approve'>" + "</td>";
                     body += "</tr>";
                     $("#tb1 tbody").append(body);

@@ -1,24 +1,22 @@
 ﻿
 @{
-    ViewBag.Title = "ViewLoans";
-    Layout = "~/Views/Shared/User.cshtml";
+    ViewBag.Title = "VerifyLoans";
+    Layout = "~/Views/Shared/verifier.cshtml";
 }
 
 <!DOCTYPE html>
+
 <head>
     <title></title>
-
-
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     @*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
-
+    
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script type="text/javascript">
-
+       
         function CallMe(id) {
             $.ajax({
-                url: 'http://localhost:64294/api/user/UserViewLoans?id=' + id,
+                url: 'http://localhost:64294/api/admin/VerifierViewLoans?id=' + id,
                 contentType: 'application/json;charset=utf-8',
 
                 method: 'get',
@@ -28,7 +26,7 @@
 
                     $("#LoanId").val(id);
 
-                    
+                    $("#Username").val(k.Username);
                     $("#AccountNumber").val(k.AccountNumber);
                     // $("#Dob").val(k.Dob);
                     $("#Income").val(k.Income);
@@ -39,33 +37,12 @@
                     //   $("#AccountType").val(k.AccountType);
                     $("#LoanType").val(k.LoanType);
 
-                    if (k.LoanType == 'Personal Loan')
-                    {
-                        $("#RateOfInterest").val('13%');
-                        $("#Tenure").val('5 years');
-                    }
-                    else if (k.LoanType == 'Home Loan')
-                    {
-                        $("#RateOfInterest").val('9%');
-                        $("#Tenure").val('8 years');
-
-                    }
-                    else if (k.LoanType == 'Car Loan') {
-                        $("#RateOfInterest").val('14%');
-                        $("#Tenure").val('4 years');
-
-                    }
-                    else if (k.LoanType == 'Mortgage Loan') {
-                        $("#RateOfInterest").val('12%');
-                        $("#Tenure").val('6 years');
-
-                    }
-                    // $("#Address").val(k.Address);
+                   // $("#Address").val(k.Address);
 
                     //     $("#IsAdmin").val(k.IsAdmin);
                     $('#myModal').modal('show');
                     $('#btnVerify').show();
-                    if (k.withdrawn[0] == 'y') {
+                    if (k.status == 'verified') {
                         $('#btnVerify').attr('disabled', 'disabled');
                     }
                     else {
@@ -81,7 +58,7 @@
 
         }
 
-        function GetAmount() {
+        function Verify() {
             jQuery.support.cors = true;
 
             var id = $("#LoanId").val();
@@ -108,7 +85,7 @@
 
             $.ajax({
 
-                url: "http://localhost:64294/api/user/GetAmount",
+                url: "http://localhost:64294/api/admin/VerifyLoans",
 
                 type: "POST",
 
@@ -128,9 +105,9 @@
                     $('#Income').val("");
                     $('#LoanAmount').val("");
                     $('#LoanType').val("");
-
-                    alert("LoanAmount Added to your account Successfully");
-                    window.location.href = "http://localhost:55773/User/ViewLoans"
+                    
+                    alert("Verified Successfully");
+                    window.location.href = "http://localhost:55773/Verifier/VerifyLoans"
 
                 },
 
@@ -144,9 +121,9 @@
         }
     </script>
 
+    <script src="~/Scripts/VerifierViewLoans.js"></script>
+   
 
-  
-    <script src="~/Scripts/ViewLoanDetails.js"></script>
     <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
 
@@ -156,32 +133,28 @@
 
 
 
+
 </head>
 <body>
-    
-
+   
         <h2>View Loans</h2>
-
-        <table id="tb1" border="1"class="table">
+        <table id="tb1" border="1" class="table">
             <thead>
                 <tr>
                     <th>Loan Id</th>
+                    <th>Username</th>
                     <th>AccountNumber</th>
                     <th>Income</th>
                     <th>Loan Amount</th>
                     <th>Loan Type</th>
-                    <th>City</th>
-                    <th>Employement Type</th>
-                    <th>status</th>
-                    <th>Approval</th>
-                    <th>Approved Time</th>
-                    <th>withdrawn</th>
-                    
+                   <th>status</th>
+
                 </tr>
             </thead>
             <tbody></tbody>
         </table><br /><br />
-        @*<input type="button" id="btn" value="GetLoans" />*@
+        @*  <input type="button" id="btn" value="GetLoans" />*@
+
 
 
 
@@ -191,7 +164,7 @@
                 <div class="modal-header">
                     @*<button type="button" class="close" data-dissmiss="modal"><span aria-hidden="true">×</span></button>*@
                     <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title" id="myModalLabel">Get Loan Amount</h4>
+                    <h4 class="modal-title" id="myModalLabel">Verify Account Details</h4>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -199,14 +172,17 @@
                             <label for="LoanId">Loan Id</label>
                             <input type="text" class="form-control" id="LoanId" placeholder="LoanId" disabled="disabled" />
                         </div>
-                       
+                        <div class="form-group">
+                            <label for="Username">Username</label>
+                            <input type="text" class="form-control" id="Username" placeholder="Username" disabled="disabled" />
+                        </div>
                         <div class="form-group">
                             <label for="AccountNumber">Account Number</label>
                             <input type="text" class="form-control" id="AccountNumber" placeholder="AccountNumber" disabled="disabled" />
                         </div>
 
                         <div class="form-group">
-                            <label for="Income">Income per year</label>
+                            <label for="Income">Income</label>
                             <input type="text" class="form-control" id="Income" placeholder="Income" disabled="disabled" />
                         </div>
                         <div class="form-group">
@@ -219,28 +195,18 @@
                             <label for="LoanType">LoanType</label>
                             <input type="text" class="form-control" id="LoanType" placeholder="LoanType" disabled="disabled" />
                         </div>
-
-                        <div class="form-group">
-                            <label for="RateOfInterest">Rate Of Interest</label>
-                            <input type="text" class="form-control" id="RateOfInterest" placeholder="RateOfInterest" disabled="disabled" />                         
-                        </div>
-
-                        <div class="form-group">
-                            <label for="Tenure">Tenure</label>
-                            <input type="text" class="form-control" id="Tenure" placeholder="Tenure" disabled="disabled" />
-                        </div>
-
-
+                        
                     </form>
                 </div>
                 <div class="modal-footer">
                     @*  <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add();">Add</button>*@
-                    <button type="button" class="btn btn-primary" id="btnVerify" onclick="GetAmount();">GetAmount</button>
+                    <button type="button" class="btn btn-primary" id="btnVerify"  onclick="Verify();">Verify</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
+   
 </body>
 
 
